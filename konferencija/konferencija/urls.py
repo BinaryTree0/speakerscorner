@@ -21,5 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url('', include('django.contrib.auth.urls')),
     url('users/', include('users.urls')),
-    url(r'^', include(('home.urls', 'Home'), namespace='home')),
+    url(r'^', include(('home.urls', 'Home'), namespace='homelinks')),
 ]

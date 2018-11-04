@@ -2,10 +2,13 @@
 
 {% block content %}
 <!-- templates/signup.html -->
-<h2>Sign up</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Sign up</button>
-</form>
+<div class="row">
+  <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign up</button>
+  </form>
+  <p class="s-margin"><a href="{% url 'homelinks:home' %}">Home </a></p>
+</div>
 {% endblock %}

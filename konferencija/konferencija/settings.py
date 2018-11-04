@@ -71,6 +71,11 @@ TEMPLATES = [
     },
 ]
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "templates/static"),
+    '/var/www/static/',
+]
+
 WSGI_APPLICATION = 'konferencija.wsgi.application'
 
 
@@ -122,4 +127,4 @@ LOGOUT_REDIRECT_URL = '/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/templates/static/'

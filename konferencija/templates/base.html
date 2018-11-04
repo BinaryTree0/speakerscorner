@@ -1,11 +1,16 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static "css/form.css" %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <title>Django Templates Tutorial</title>
 </head>
 <body>
+  <div class="col-md-4 col-md-offset-4 l-margin">
   {% block content %}
   {% endblock %}
+  </div>
 </body>
 </html>
