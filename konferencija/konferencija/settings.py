@@ -34,6 +34,7 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 INSTALLED_APPS = [
     'home',
+    'conference',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

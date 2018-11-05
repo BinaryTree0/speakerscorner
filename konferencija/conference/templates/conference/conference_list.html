@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class='row'>
+  <div class='col-sm-6 col-sm-offset-3'>
+  <ul>
+  {% for obj in object_list %}
+      <li>{{ obj.name }}</li>
+  {% endfor %}
+  </ul>
+  </div>
+  <p><a href="{% url 'conference:create' %}">Create</a></p>
+  <p><a href="{% url 'logout' %}">logout</a></p>
+</div>
+{% endblock %}

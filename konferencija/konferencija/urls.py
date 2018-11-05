@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url('', include('django.contrib.auth.urls')),
     url('users/', include('users.urls')),
+    url('conference/', include(('conference.urls','conference'),namespace = 'conference')),
     url(r'^', include(('home.urls', 'Home'), namespace='homelinks')),
 ]
