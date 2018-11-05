@@ -1,14 +1,11 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
 
 {% block content %}
-<!-- templates/signup.html -->
-<div class="row">
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
-  </form>
-  <p class="s-margin"><a href="{% url 'homelinks:home' %}">Home </a></p>
-</div>
+<h2>Sign up</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Sign up</button>
+</form>
 {% endblock %}
