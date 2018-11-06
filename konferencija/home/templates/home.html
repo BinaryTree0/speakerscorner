@@ -5,8 +5,10 @@
 {% block content %}
 {% if user.is_authenticated %}
   Hi {{ user.username }}!
-  You are {{user.recenzent}}
+  {% if user.is_superuser %}
   <p><a href="{% url 'conference:create' %}">Create conference</a></p>
+  <p><a href="{% url 'conference:list' %}">Conference list</a></p>
+  {% endif %}
   <p><a href="{% url 'logout' %}">logout</a></p>
 
 {% else %}

@@ -3,8 +3,6 @@ from django.db import models
 from django.db.models.signals import pre_save
 
 class CustomUser(AbstractUser):
-    recenzent = models.BooleanField(default=False)
-
     email = models.EmailField(('email address'), unique=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
@@ -14,6 +12,6 @@ class CustomUser(AbstractUser):
 
 
 def pre_save_reciever(sender,instance,*args,**kwargs):
-    print(instance.recenzent)
+    print(instance.pk)
 
 pre_save.connect(pre_save_reciever,sender=CustomUser)

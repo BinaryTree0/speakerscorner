@@ -7,6 +7,8 @@
   {{ form.as_p }}
   <button type="submit">Create</button>
 </form>
-<p class="s-margin"><a href="{% url 'homelinks:home' %}">Home </a></p>
-<p><a href="{% url 'conference:detail' %}">list</a></p>
+<div class="s-margin">
+  <p><a href="{% url 'homelinks:home' %}">Home</a></p>
+  <p><a href="{% url 'conference:list' %}">List</a></p>
+</div>
 {% endblock %}
