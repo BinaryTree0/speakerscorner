@@ -4,6 +4,7 @@ from django.views import generic
 from django.urls import reverse_lazy
 from django import http
 #Query imports
+from django.db.models import Q
 #Other django imports
 from django.contrib.auth import get_user_model, views as auth_views
 from django.contrib.auth.tokens import default_token_generator
@@ -60,7 +61,7 @@ class CustomUserListView(generic.ListView):
     template_name = 'custom_user_list.html'
     login_url = reverse_lazy('login')
     def get_queryset(self):
-        konferencije = models.User_Sekcija.objects.filter(user_id = self.request.user.id).values('sekcija__konferencija_id').distinct()
+        konferencije = models.User_Sekcija.objects.filter(Q(user_id = self.request.user.id) & ~Q(sekcija__konferencija__chairman_id = self.request.user.id)).values('sekcija__konferencija_id').distinct()
         queryset = models.Konferencija.objects.filter(id__in = konferencije)
         return queryset
 
