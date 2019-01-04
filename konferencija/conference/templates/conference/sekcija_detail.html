@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Page Content -->
+  <div class="container">
+    <div class="empty-space">
+    </div>
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-5">{{ object.name|title }}
+    </h1>
+
+    <!-- Marketing Icons Section -->
+    <div class="row">
+      {% if registered %}
+        {% if Bool %}
+          <div class="col-lg-4 mb-4">
+            <div class="card h-100">
+              <h4 class="card-header">Upload file</h4>
+              <div class="card-body">
+                <p class="card-text">Days left to upload: {{ Time }} days</p>
+                {% if State %}
+                <p class="card-text">Current state of paper: {{ State }} </p>
+                <p class="card-text">Name of paper: {{ Rad.title|title }} </p>
+                {% endif %}
+              </div>
+              <div class="card-footer">
+                <a href="{% url 'conference:create_file' pk=registered.id %}" class="btn btn-secondary">Upload</a>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Radovi</h4>
+          <div class="card-body">
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
+          </div>
+          <div class="card-footer">
+            <a href="{% url 'conference:radovi_list' pk=registered.sekcija.id %}" class="btn btn-secondary">Let's go</a>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">Register</h4>
+          <div class="card-body">
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+          </div>
+          <div class="card-footer">
+            <form method="post">
+              {% csrf_token %}
+              <button type="submit">Create</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    <!-- /.row -->
+    <div class="row ml-1">
+      <a href="{% url 'conference:detail' pk=Sekcija.konferencija.id %}">Back</a>
+    </div>
+
+  </div>
+  <!-- /.container -->
+{% endblock %}

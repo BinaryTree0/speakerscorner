@@ -16,11 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
+from django.contrib.auth import views as auth_views
+
 
 urlpatterns = [
+    url('^messenger/', include(('messenger.urls','messenger'),namespace = 'messenger')),
     url(r'^admin/', admin.site.urls),
-    url('', include('django.contrib.auth.urls')),
-    url('users/', include('users.urls')),
     url('conference/', include(('conference.urls','conference'),namespace = 'conference')),
-    url(r'^', include(('home.urls', 'Home'), namespace='homelinks')),
+    url('logout/',auth_views.LogoutView.as_view(),name = 'logout'),
+    url('^', include('users.urls')),
+
 ]

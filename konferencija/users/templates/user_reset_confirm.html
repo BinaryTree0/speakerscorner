@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="container">
+    <div class="empty-space">
+    </div>
+  </div>
+  <form method="post">
+    {% csrf_token %}
+    <p><label for="id_new_password1">New password:</label> <input class="form-control" type="password" name="new_password1" required id="id_new_password1"> <span class="helptext"><ul><li>Your password can&#39;t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can&#39;t be a commonly used password.</li><li>Your password can&#39;t be entirely numeric.</li></ul></span></p>
+    <p><label for="id_new_password2">New password confirmation:</label> <input class="form-control" type="password" name="new_password2" required id="id_new_password2"></p>
+    <input class="btn btn-secondary" type="submit" value="Reset">
+  </form>
+</div>
+
+{% endblock %}

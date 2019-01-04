@@ -27,14 +27,19 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+#Mailing
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'senatferprojekt@gmail.com'
+EMAIL_HOST_PASSWORD = 'DqAPuxR13wTx1TpsPz'
+EMAIL_PORT = 587
 
 # Application definition
 AUTH_USER_MODEL = 'users.CustomUser'
 
 INSTALLED_APPS = [
-    'home',
     'conference',
+    'messenger',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -123,7 +128,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/conference/'
 LOGOUT_REDIRECT_URL = '/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/

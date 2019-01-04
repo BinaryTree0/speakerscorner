@@ -1,15 +1,13 @@
+#Django imports
 from django.contrib import admin
-from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
-
-from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser
+#Local imports
+from . import models
 
 class CustomUserAdmin(UserAdmin):
-    model = CustomUser
-
-    fieldsets = UserAdmin.fieldsets + (
-            (None, {'fields': ('recenzent',)}),
+    model = models.CustomUser
+    fieldsets = UserAdmin.fieldsets +  (
+            (None, {'fields': ('email_confirmed','ulica','kucni_broj','grad','drzava')}),
     )
 
-admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(models.CustomUser, CustomUserAdmin)

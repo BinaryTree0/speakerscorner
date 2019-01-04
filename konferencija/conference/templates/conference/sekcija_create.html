@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Contact Form -->
+  <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+  <div class="row">
+    <div class="col-lg-8 mb-4 pt-5">
+      <h3>{{Sekcija.name}} {{Konferencija.name}}</h3>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% for obj in Konferencija.form %}
+        <li>
+          <p>{{ obj }}</p>
+          <input class="class="form-control" "type="text" name= 'question - {{ forloop.counter }}'>
+        </li>
+        {% endfor %}
+        <button class="btn btn-secondary" type="submit">Create</button>
+      </form>
+  </div>
+</div>
+  </div>
+  <!-- /.row -->
+<!-- /.container -->
+{% endblock %}

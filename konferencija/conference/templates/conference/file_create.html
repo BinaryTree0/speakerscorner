@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Contact Form -->
+  <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+  <div class="row">
+    <div class="col-lg-8 mb-4 pt-5">
+      <h3 class="mb-5">Upload file</h3>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p><label for="id_authors">Authors:</label> <input class="form-control" type="text" name="authors" maxlength="120" required id="id_authors"></p>
+        <p><label for="id_title">Title:</label> <input class="form-control" type="text" name="title" maxlength="120" required id="id_title"></p>
+        <p><label for="id_file">File:</label><input class="form-control-file" accept="application/pdf" type="file" name="upload" required id="id_upload"></p>
+        <button class="btn btn-secondary" type="submit">Upload</button>
+      </form>
+    </div>
+
+  </div>
+  <!-- /.row -->
+
+</div>
+<!-- /.container -->
+{% endblock %}

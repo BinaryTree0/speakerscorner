@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Page Content -->
+<div class="container">
+  <!-- Contact Form -->
+  <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+  <div class="row">
+    <div class="col-lg-8 mb-4 pt-5">
+      <h3>Sign up</h3>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-secondary" type="submit">Sign up</button>
+      </form>
+    </div>
+  </div>
+  <!-- /.row -->
+</div>
+<!-- /.container -->
+{% endblock %}

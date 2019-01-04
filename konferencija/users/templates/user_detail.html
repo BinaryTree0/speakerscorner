@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Page Content -->
+    <div class="container">
+      <div class="empty-space">
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          <p><label for="id_email">First Name:</label> <input class="form-control" value="{{ object.first_name }}" disabled></p>
+        </div>
+      </div>
+          <hr>
+      <div class="row">
+        <div class="col-md-5">
+          <p><label for="id_email">Last Name:</label> <input class="form-control" value="{{ object.last_name }}" disabled></p>
+        </div>
+      </div>
+          <hr>
+      <div class="row">
+        <div class="col-md-5">
+          <p><label for="id_email">Username:</label> <input class="form-control" value="{{ object.username }}" disabled></p>
+        </div>
+      </div>
+          <hr>
+      <div class="row">
+        <div class="col-md-5">
+          <p><label for="id_email">Email address:</label> <input class="form-control"  value="{{ object.email }}"disabled></p>
+        </div>
+      </div>
+      <hr>
+      <a class="btn btn-secondary" href="{% url 'update' object.id %}">Update account
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+      <a class="btn btn-secondary" href="{% url 'user-change-password' %}">Change password
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+      <div class="empty-space">
+      </div>
+    </div>
+    <!-- /.container -->
+{% endblock %}

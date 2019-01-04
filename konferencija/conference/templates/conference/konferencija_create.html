@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Contact Form -->
+  <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+  <div class="row">
+    <div class="col-lg-8 mb-4 pt-5">
+      <h3>Conference Creation</h3>
+      <form method="post" enctype="multipart/form-data" class="mt-4">
+        {% csrf_token %}
+        <p><label for="id_name">Name:</label> {{ form.name }}</p>
+        {{ form.name.errors}}
+        <p><label class="form-check-label" for="id_chairman">Chairman:</label> {{ form.chairman }}</p>
+        <p>
+          <label>Model categories:</label>
+          <ul id="id_model_categories">
+            <li>
+              <label class="form-check-label" for="id_model_categories_0">
+              <input class="form-check-input" type="checkbox" name="model_categories" value="maths" id="id_model_categories_0">maths</label>
+            </li>
+            <li>
+              <label class="form-check-label" for="id_model_categories_1">
+              <input class="form-check-input" type="checkbox" name="model_categories" value="history" id="id_model_categories_1">history</label>
+            </li>
+            <li>
+              <label class="form-check-label" for="id_model_categories_2">
+              <input class="form-check-input"  type="checkbox" name="model_categories" value="science" id="id_model_categories_2">science</label>
+            </li>
+          </ul>
+        </p>
+        <p><label for="id_image">Image:</label> <input type="file" name="image" accept="image/*" class="file-form-control" required id="id_image"></p>
+        {{ form.image.errors}}
+        <div id="field">
+          <div class="input-group mb-3" id="group-input-1">
+            <input autocomplete="off" class="input form-control" name="question" type="text" placeholder="Type question" data-items="8"/>
+            <div class="input-group-append" id="group1">
+              <button id="btn-append" class="btn" type="button">+</button>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-secondary" type="submit">Create</button>
+      </form>
+    </div>
+
+  </div>
+  <!-- /.row -->
+
+
+</div>
+<!-- /.container -->
+<script type="text/javascript">
+  $(document).ready(function(){
+    var next = 1;
+    $("#field").on("click", "#btn-append", function(e){
+        e.preventDefault();
+        var groupId = "#group"+next
+        var appendButton = $("#btn-append")
+        var removeButton = '<button id="btn-remove-' + next + '" class="btn btn-remove" type="button">-</button>'
+        next = next + 1
+        var newInput = '<div class="input-group mb-3" id="group-input-'+ next + '"><input autocomplete="off" class="input form-control" name="question" type="text" placeholder="Type questions" data-items="8"/><div class="input-group-append" id="group' + next +'"><button id="btn-append" class="btn" type="button">+</button></div></div>'
+        $("#btn-append").remove()
+        $(groupId).append(removeButton)
+        $("#field").append(newInput)
+    });
+    $("#field").on("click", ".btn-remove", function(e){
+      var id = e.target.id.split("-")[2]
+      $("#group-input-"+id).remove()
+    });
+});
+
+</script>
+{% endblock %}

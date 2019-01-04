@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Page Content -->
+<div class="container">
+  <div class="container">
+    <div class="empty-space">
+    </div>
+  </div>
+  <!-- Contact Form -->
+  <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+  <div class="row">
+    <div class="col-lg-8 mb-4 pt-5">
+      <h2>Login</h2>
+      <form method="post" class="mt-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-secondary" type="submit">Login</button><a class="float-right" href="{% url 'reset-password' %}">Reset password </a>
+      </form>
+    </div>
+
+  </div>
+  <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+{% endblock %}

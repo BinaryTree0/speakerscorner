@@ -1,0 +1,154 @@
+/*!
+ * Start Bootstrap - Modern Business (https://startbootstrap.com/template-overviews/modern-business)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-logomodern-business-nav/blob/master/LICENSE)
+ */
+ html, body {
+     height: 100%;
+}
+body{
+  padding-top: 6vh;
+}
+
+.navbar{
+  height:6vh;
+}
+.wrapper {
+    min-height: 100%;
+    padding-bottom: 100px;
+}
+
+.image-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.empty-space{
+  height: 12vh;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+.form{
+  height: 93vh;
+}
+
+.bg {
+  height: 100vh;
+  /* The image used */
+  background: url("/templates/static/images/conference.jpg");
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.layer {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100vh;
+}
+.outer {
+   padding-top: 25vh;
+ }
+.bg-dark {
+    background-color: #343a40;
+}
+.bg-custom{
+  background-color: rgba(255, 255, 255, 0);
+  padding-top: 7vh!important;
+}
+.bg-custom .navbar-brand{
+  font-size: 6vh !important;
+}
+.bg-custom a{
+  font-size: 2.5vh;
+  color: white!important;
+}
+.bg-custom .navbar{
+  height: 10vh;
+}
+.bg-dark .navbar{
+  height: 6vh;
+}
+.bg-dark .navbar-brand{
+  font-size: 3.2vh !important;
+}
+.bg-dark a{
+  font-size: 2vh;
+}
+
+.layer-content{
+  padding-top: 35vh;
+  text-align: center;
+}
+.layer-content p{
+  font-size: 6vh;
+  color: white;
+}
+.layer-content p span{
+  background-color: rgb(52,58,64,0.5);
+  padding-left: 2vh;
+  padding-right: 2vh;
+}
+.scrollable-list{
+  overflow-y: auto;
+  height: 60vh;
+}
+.search{
+  border-bottom-color: white !important;
+  border-left-color: white !important;
+  border-right-color: white !important;
+  border-radius: 0px !important;
+}
+.search:active{
+  border-bottom-color: white !important;
+  border-left-color: white !important;
+  border-right-color: white !important;
+  border-radius: 0px !important;
+}
+.messenger{
+  height: 60vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#return-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.7);
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    display: none;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#return-to-top i {
+    color: #fff;
+    margin: 0;
+    position: relative;
+    left: 18px;
+    top: 13px;
+    font-size: 19px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#return-to-top:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+#return-to-top:hover i {
+    color: #fff;
+    top: 5px;
+}

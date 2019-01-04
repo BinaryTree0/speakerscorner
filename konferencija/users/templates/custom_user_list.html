@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="empty-space">
+</div>
+<div class="container">
+  <h2  class="mb-5 text-center">Conference Contacts</h2>
+  <input type="text" class="form-control search" placeholder="  Search for names..">
+  <ul class="list-group list-group-flush scrollable-list">
+    {% for obj in konf_list %}
+      {% if not request.user == obj %}
+          <li class="list-group-item list-group-item-action">{{ obj.name|title }} <a class="float-right" href="{% url 'messenger:messenger' obj.chairman.id %}">Messenger</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+<script>
+$(document).ready(function(){
+  $(".search").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $(".scrollable-list li").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+{% endblock %}

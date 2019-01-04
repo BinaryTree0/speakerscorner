@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<a href="javascript:" id="return-to-top"><i class="fas fa-angle-up"></i></a>
+{% if not request.user.is_authenticated %}
+<!-- Header -->
+<div class="bg">
+  <div class="layer">
+    <div class="layer-content">
+      <p><span>Welcome to Speakers Corner</span></p>
+      <p><span>A website for organizing and finding conferences</span></p>
+      <button id="scroll-down" class="btn btn-secondary btn-lg">Let's start</button>
+    </div>
+  </div>
+</div>
+
+<div class="container" id="middle">
+  <div class="empty-space">
+  </div>
+</div>
+{% endif %}
+<!-- Page Content -->
+  <div class="container" >
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="text-center pt-5 mr-5">Conferences</h1>
+    <div class="row pt-5 offset-1">
+      <!-- Blog Entries Column -->
+      <div class="col-md-10">
+        {% for obj in object_list reversed  %}
+        <!-- Blog Post -->
+        <div class="card mb-5">
+          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+          <div class="card-body">
+            <h2 class="card-title">{{ obj.name }}</h2>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+            <a href="{{ obj.get_absolute_url }}" class="btn btn-secondary">Read More &rarr;</a>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container -->
+  </div>
+{% if not user.is_authenticated %}
+<script type="text/javascript">
+  $(document).ready(function(){
+    $( "body" ).css("padding-top","0");
+    if(document.scrollingElement.scrollTop == 0 ){
+      $( ".navbar" ).removeClass("bg-dark");
+      $( ".navbar" ).addClass("bg-custom");
+    }
+    $(window).scroll(function(){
+      console.log(document.scrollingElement.scrollTop);
+      if(document.scrollingElement.scrollTop == 0 ){
+        console.log("here");
+        $( ".navbar" ).removeClass("bg-dark");
+        $( ".navbar" ).addClass("bg-custom");
+      }else if(document.scrollingElement.scrollTop != 0){
+        $( ".navbar" ).removeClass("bg-custom");
+        $( ".navbar" ).addClass("bg-dark");
+      }
+    });
+    $("#scroll-down").click(function() {
+      console.log("click")
+      $('html,body').animate({
+        scrollTop: $("#middle").offset().top},
+        'slow');
+      });
+});
+</script>
+{% endif %}
+<script type="text/javascript">
+  $(document).ready(function(){
+    // ===== Scroll to Top ====
+  $(window).scroll(function() {
+      if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+          $('#return-to-top').fadeIn(200);    // Fade in the arrow
+      } else {
+          $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+      }
+  });
+  $('#return-to-top').click(function() {      // When arrow is clicked
+      $('body,html').animate({
+          scrollTop : 0                       // Scroll to top of body
+      }, 500);
+  });
+});
+</script>
+{% endblock %}

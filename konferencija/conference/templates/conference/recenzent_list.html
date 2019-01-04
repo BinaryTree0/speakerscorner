@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2  class="container mb-5 text-center" >Recenzent approval</h2>
+  {% for obj in recenzent_list %}
+  <div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="{{ obj.user.username }}   {{ obj.sekcija.name|title }}" aria-label="Recipient's username" aria-describedby="basic-addon2" disabled>
+  <div class="input-group-append">
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="bool" value = "true"/>
+      <button class="btn btn-outline-secondary" type="submit" style="border-radius: 0px;">Approve</button>
+    </form>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="bool" value="false"/>
+      <button class="btn btn-outline-secondary" style="border-radius: 0px 5px 5px 0px;" type="submit">Deny</button>
+    </form>
+  </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}
