@@ -5,22 +5,28 @@
     <div class="container">
 
       <!-- Page Heading/Breadcrumbs -->
+      {% if request.user.is_authenticated %}
       <h1 class="mt-4 mb-3 pt-3 pb-3 " >{{ object.name|title }}
       </h1>
-
-
+      {% else %}
+      <h1 class="mt-4 mb-3 pt-3 pb-3 text-center" >{{ object.name|title }}
+      </h1>
+      {% endif %}
       <div class="row">
 
         <!-- Post Content Column -->
+        {% if request.user.is_authenticated %}
         <div class="col-lg-8">
-
+        {% else %}
+        <div class="col-lg-8 offset-md-2">
+        {% endif %}
           <!-- Preview Image -->
           <img class="img-fluid rounded pb-3" src="http://placehold.it/900x600" alt="">
 
           <hr>
 
           <!-- Date/Time -->
-          <p>Posted on January 1, 2017 at 12:00 PM</p>
+          <p>Posted on {{ object.time }}</p>
 
           <hr>
 

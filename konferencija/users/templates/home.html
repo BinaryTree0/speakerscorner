@@ -3,12 +3,12 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<a href="javascript:" id="return-to-top"><i class="fas fa-angle-up"></i></a>
+<a href="javascript:" class="hidden-sm-down" id="return-to-top"><i class="fas fa-angle-up"></i></a>
 {% if not request.user.is_authenticated %}
 <!-- Header -->
 <div class="bg">
   <div class="layer">
-    <div class="layer-content">
+    <div class="layer-content pb-sm-5">
       <p><span>Welcome to Speakers Corner</span></p>
       <p><span>A website for organizing and finding conferences</span></p>
       <button id="scroll-down" class="btn btn-secondary btn-lg">Let's start</button>
@@ -25,7 +25,7 @@
   <div class="container" >
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="text-center pt-5 mr-5">Conferences</h1>
-    <div class="row pt-5 offset-1">
+    <div class="row pt-5 offset-md-1">
       <!-- Blog Entries Column -->
       <div class="col-md-10">
         {% for obj in object_list reversed  %}

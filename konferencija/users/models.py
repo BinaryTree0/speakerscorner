@@ -4,7 +4,6 @@ from django.db import models
 from django.urls import reverse_lazy
 #Local imports
 from . import utils
-
 #Custom user that has email instead as username field
 class CustomUser(AbstractUser):
     email = models.EmailField(('email address'), unique=True)
