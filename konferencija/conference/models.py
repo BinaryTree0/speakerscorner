@@ -8,7 +8,7 @@ def clearString(str):
     return str
 def konferencija_directory_path(instance,filename):
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
-    string = 'templates/static/images/{0}/{1}'.format(clearString(instance.name),clearString(filename))
+    string = 'uploads/konferencije/{0}/{1}'.format(clearString(instance.name),clearString(filename))
     return string
 #Konferencija
 class Konferencija(models.Model):

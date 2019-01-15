@@ -28,19 +28,17 @@ class ConferenceCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     def post(self, request, *args, **kwargs):
         questions = []
         self.object = None
-        for i in request.POST:
-            if('question' in i):
-                if(request.POST[i]==''):
-                    break
-                questions.append(request.POST[i])
+        questions = request.POST.getlist('question')
+        questions = list(filter(None, questions))
         if(len(questions)!=0):
             questions = ','.join(questions)
-            questions = questions + ','
+            questions = questions
         form = self.form_class(self.request.POST, self.request.FILES)
         if form.is_valid():
             return self.form_valid(form, questions)
         else:
             return self.form_invalid(form)
+
     def test_func(self):
         return self.request.user.is_staff
 
@@ -119,7 +117,7 @@ class SekcijeCreateView(LoginRequiredMixin, CreateView):
         context['Konferencija'] = Konferencija.objects.filter(id = context['Sekcija'].konferencija.id).get()
         list = context['Konferencija'].form.split(',')
         if(len(list)>1):
-            context['Konferencija'].form = list[0:len(list)-1]
+            context['Konferencija'].form = list
         else:
             context['Konferencija'].form = ''
         return context
@@ -133,7 +131,6 @@ class SekcijeCreateView(LoginRequiredMixin, CreateView):
         return super(SekcijeCreateView, self).form_valid(form)
 
     def post(self, request, *args, **kwargs):
-        print(request.POST)
         self.object = None
         questions = ''
         for i in request.POST:
@@ -202,9 +199,7 @@ class RadoviListView(LoginRequiredMixin, ListView):
     def post(self, request, *args, **kwargs):
         if('path' in request.POST):
             path = request.POST['path']
-            print(path)
             rad = Radovi.objects.filter(upload = path)
-            print(rad)
             bool = User_Sekcija.objects.filter(sekcija_id = self.kwargs['pk'],user_id = self.request.user.id).get().recenzent_approved
             if(rad.get().approved == 0 and bool == 1):
                 rad.update(approved = 1)
@@ -243,7 +238,7 @@ class RecenzentListView(LoginRequiredMixin,ListView):
     def post(self, request, *args, **kwargs):
         queryset = self.get_queryset()
         if(request.POST['bool'] == "true"):
-            queryset.update(recenzent_not_approved=0,recenzent_approved = 1)
+            queryset.filter(user_id=request.POST['user']).update(recenzent_not_approved=0,recenzent_approved = 1)
         else:
-            queryset.update(recenzent_not_approved=0,recenzent_approved = 0)
+            queryset.filter(user_id=request.POST['user']).update(recenzent_not_approved=0,recenzent_approved = 0)
         return self.get(self, request, *args, **kwargs)

@@ -3,6 +3,7 @@
 
 {% block content %}
 <div class="container mb-5">
+  <h4 class="p-3">{{ request.user.username|title}} - {{ ChatBuddy.username|title }}</h4>
   <div class="empty-space">
   </div>
   <div class="messenger">
@@ -11,7 +12,7 @@
     <div class="row">
       <div class="col-5">
       <div class="media mb-4 ml-2">
-        <div class="media-body p-2" style = "border:1px solid black; border-radius:8px; font:5px;">
+        <div class="media-body p-2 message" style = "border:1px solid black; border-radius:8px; font:3px !important;">
           {{ obj.message }}
           <footer class="footer">
                 <cite title="Source Title">{{ obj.time }}</cite>
@@ -22,9 +23,9 @@
     </div>
   {% else %}
     <div class="row">
-      <div class="offset-6 col-5">
+      <div class="col-5 offset-5">
         <div class="media mb-4">
-          <div class="media-body p-2 text-right" style = "border:1px solid black; border-radius:8px; font:5px;">
+          <div class="media-body p-2 text-right message" style = "color:white;background-color:#6c757d;border:1px solid black; border-radius:8px; font:3px !important;">
             {{ obj.message }}
             <footer class="footer">
                   <cite title="Source Title">{{ obj.time }}</cite>

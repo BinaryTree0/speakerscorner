@@ -95,7 +95,6 @@
   height: 60vh;
 }
 .search{
-  border-bottom-color: white !important;
   border-left-color: white !important;
   border-right-color: white !important;
   border-radius: 0px !important;
@@ -107,9 +106,14 @@
   border-radius: 0px !important;
 }
 .messenger{
-  height: 60vh;
-  overflow-x: hidden;
+  height: 55vh;
+  overflow-x: auto;
   overflow-y: auto;
+}
+
+.message{
+  max-width: 70vh;
+  overflow-wrap: break-word;
 }
 
 #return-to-top {

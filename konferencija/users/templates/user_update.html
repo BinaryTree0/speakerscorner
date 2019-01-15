@@ -8,8 +8,9 @@
     {% csrf_token %}
     <p><label for="id_first_name">First Name:</label> <input class="form-control" value="{{ object.first_name }}" type="text" name="first_name"  maxlength="20" required id="id_first_name"></p>
     <p><label for="id_last_name">Last Name:</label> <input class="form-control" value="{{ object.last_name }}" type="text" name="last_name"  maxlength="20" required id="id_last_name"></p>
-    <p><label for="id_email">Email address:</label> <input class="form-control" value="{{ object.email }}" type="email" name="email"  maxlength="254" required id="id_email"></p>
     <p><label for="id_username">Username:</label> <input class="form-control" value="{{ object.username }}" type="text" name="username" maxlength="150" required id="id_username"> <span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span></p>
+    <p><label for="id_ulica">Ulica</label> <input class="form-control" value="{{ object.ulica }}" type="ulica" name="ulica"  maxlength="254" required id="id_ulica"></p>
+    <p><label for="id_grad">Grad</label> <input class="form-control" value="{{ object.grad }}" type="grad" name="grad"  maxlength="254" required id="id_grad"></p>
     <input class="btn btn-secondary" type="submit" value="Update">
 </form>
 <div class="empty-space">

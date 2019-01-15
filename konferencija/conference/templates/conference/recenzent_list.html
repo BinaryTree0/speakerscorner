@@ -9,6 +9,7 @@
   <div class="input-group-append">
     <form method="post">
       {% csrf_token %}
+      <input type="hidden" name="user" value = "{{ obj.user.id }}"/>
       <input type="hidden" name="bool" value = "true"/>
       <button class="btn btn-outline-secondary" type="submit" style="border-radius: 0px;">Approve</button>
     </form>

@@ -12,10 +12,10 @@
         {% csrf_token %}
         {{ form.as_p }}
         {% for obj in Konferencija.form %}
-        <li>
+        <div class="pb-3">
           <p>{{ obj }}</p>
-          <input class="class="form-control" "type="text" name= 'question - {{ forloop.counter }}'>
-        </li>
+          <input class="form-control" type="text" name= 'question - {{ forloop.counter }}'>
+        </div>
         {% endfor %}
         <button class="btn btn-secondary" type="submit">Create</button>
       </form>

@@ -8,7 +8,7 @@ def send_mail_to(instance):
     token = default_token_generator.make_token(instance)
     uid = utils.http.urlsafe_base64_encode(utils.encoding.force_bytes(instance.pk))
     uid = uid.decode("utf-8")
-    domain = '127.0.0.1:8000'
+    domain = 'filipradovic.pythonanywhere.com'
     #Sending mail
     from_email = EMAIL_HOST
     message = 'http://' + domain  + '/users/validate/'+ uid + '/' + token +'/'

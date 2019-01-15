@@ -37,7 +37,7 @@ class UserUpdateView(LoginRequiredMixin,generic.edit.UpdateView):
     template_name = 'user_update.html'
     model = get_user_model()
     login_url = reverse_lazy('login')
-    fields = ['first_name','last_name','email','username']
+    fields = ['first_name','last_name','ulica','grad','username']
     def get_success_url(self, **kwargs):
         return reverse_lazy('detail', kwargs = {'pk': self.kwargs['pk']})
 

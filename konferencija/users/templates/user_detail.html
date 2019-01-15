@@ -29,12 +29,26 @@
         </div>
       </div>
       <hr>
+      <div class="row">
+        <div class="col-md-5">
+          <p><label for="id_ulica">Ulica:</label> <input class="form-control"  value="{{ object.ulica }}"disabled></p>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-5">
+          <p><label for="id_grad">Grad:</label> <input class="form-control"  value="{{ object.grad }}"disabled></p>
+        </div>
+      </div>
+      <hr>
       <a class="btn btn-secondary" href="{% url 'update' object.id %}">Update account
         <span class="glyphicon glyphicon-chevron-right"></span>
       </a>
+      {% if not object != request.user%}
       <a class="btn btn-secondary" href="{% url 'user-change-password' %}">Change password
         <span class="glyphicon glyphicon-chevron-right"></span>
       </a>
+      {% endif %}
       <div class="empty-space">
       </div>
     </div>

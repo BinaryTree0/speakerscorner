@@ -3,16 +3,18 @@
 {% block content %}
 <div class="empty-space">
 </div>
-<div class="container">
+<div class="container ">
   <h2  class="container mb-5 text-center" >User list</h2>
   <input type="text" class="form-control search" placeholder="  Search for names..">
-  {% for obj in user_list %}
-    {% if not request.user == obj %}
-    <ul class="list-group list-group-flush scrollable-list">
-      <li class="list-group-item list-group-item-action">{{ obj.username|title }}   {{ obj.sekcija.name|title }} <a class="float-right ml-3" href="{{ obj.get_absolute_url }}">Profile</a><a class="float-right" href="{% url 'messenger:messenger' obj.id %}">Messenger</a></li>
-    </ul>
-    {% endif %}
-{% endfor %}
+  <div class="scrollable-list">
+    {% for obj in user_list %}
+      {% if not request.user == obj %}
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item list-group-item-action">{{ obj.username|title }}   {{ obj.sekcija.name|title }} <a class="float-right ml-3" href="{{ obj.get_absolute_url }}">Profile</a><a class="float-right" href="{% url 'messenger:messenger' obj.id %}">Messenger</a></li>
+      </ul>
+      {% endif %}
+  {% endfor %}
+  </div>
 </div>
 <script>
 $(document).ready(function(){

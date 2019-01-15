@@ -35,7 +35,7 @@ class MessageList(generic.ListView):
                     'class_name': self.__class__.__name__,
                 })
         context = self.get_context_data()
-
+        context['ChatBuddy'] = user_model.objects.filter(id = self.kwargs['pk']).get()
         #Get number from which last 18 messages will be shown
         return self.render_to_response(context)
 

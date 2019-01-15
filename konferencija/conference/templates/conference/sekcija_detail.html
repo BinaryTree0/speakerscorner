@@ -13,7 +13,7 @@
     <!-- Marketing Icons Section -->
     <div class="row">
       {% if registered %}
-        {% if Bool %}
+        {% if Bool and not registered.recenzent_approved%}
           <div class="col-lg-4 mb-4">
             <div class="card h-100">
               <h4 class="card-header">Upload file</h4>
@@ -37,7 +37,7 @@
             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
           </div>
           <div class="card-footer">
-            <a href="{% url 'conference:radovi_list' pk=registered.sekcija.id %}" class="btn btn-secondary">Let's go</a>
+            <a href="{% url 'conference:radovi_list' pk=registered.sekcija.id %}" class="btn btn-secondary">Pogledaj radove</a>
           </div>
         </div>
       </div>

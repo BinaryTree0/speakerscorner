@@ -3,12 +3,12 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<a href="javascript:" class="hidden-sm-down" id="return-to-top"><i class="fas fa-angle-up"></i></a>
+<a href="javascript:" id="return-to-top"><i class="fas fa-angle-up"></i></a>
 {% if not request.user.is_authenticated %}
 <!-- Header -->
 <div class="bg">
   <div class="layer">
-    <div class="layer-content pb-sm-5">
+    <div class="layer-content">
       <p><span>Welcome to Speakers Corner</span></p>
       <p><span>A website for organizing and finding conferences</span></p>
       <button id="scroll-down" class="btn btn-secondary btn-lg">Let's start</button>
@@ -25,7 +25,7 @@
   <div class="container" >
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="text-center pt-5 mr-5">Conferences</h1>
-    <div class="row pt-5 offset-md-1">
+    <div class="row pt-5 offset-1">
       <!-- Blog Entries Column -->
       <div class="col-md-10">
         {% for obj in object_list reversed  %}
@@ -35,7 +35,13 @@
           <div class="card-body">
             <h2 class="card-title">{{ obj.name }}</h2>
             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-            <a href="{{ obj.get_absolute_url }}" class="btn btn-secondary">Read More &rarr;</a>
+            <a href="{{ obj.get_absolute_url }}" class="btn btn-secondary">
+                {% if not request.user.is_authenticated %}
+                Read More &rarr;
+                {% else %}
+                Join
+                {% endif %}
+            </a>
           </div>
         </div>
         {% endfor %}
