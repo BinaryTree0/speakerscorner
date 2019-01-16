@@ -143,13 +143,18 @@ class SekcijeCreateView(LoginRequiredMixin, CreateView):
             return self.form_valid(form,questions)
         else:
             return self.form_invalid(form)
+
     def get_success_url(self):
         url = reverse_lazy('conference:sekcija', kwargs={'pk': self.kwargs['pk']})
         return url
 
 class SekcijeView(View):
     def get(self, request, *args, **kwargs):
-        view = SekcijeDetailView.as_view()
+        bool = User_Sekcija.objects.filter(user = self.request.user, sekcija_id = kwargs['pk'])
+        if not bool:
+            view = SekcijeCreateView.as_view()
+        else:
+            view = SekcijeDetailView.as_view()
         return view(request, *args, **kwargs)
     def post(self, request, *args, **kwargs):
         view = SekcijeCreateView.as_view()
@@ -181,7 +186,7 @@ class FileCreateView(LoginRequiredMixin, CreateView):
 class RadoviListView(LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
     def get_queryset(self):
-        radovi = Radovi.objects.filter(user_sekcija__sekcija_id = self.kwargs['pk'])
+        radovi = Radovi.objects.filter(user_sekcija__sekcija_id = self.kwargs['pk'],user_sekcija__recenzent_approved = 0)
         users = radovi.values('user_sekcija').distinct()
         queryset = Radovi.objects.none()
         for i in users:
@@ -190,6 +195,7 @@ class RadoviListView(LoginRequiredMixin, ListView):
             query = query.filter(id = max_pk)
             queryset = queryset | query
         return queryset
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['bool'] = User_Sekcija.objects.filter(user_id=self.request.user.id,sekcija_id=self.kwargs['pk']).get().recenzent_approved
@@ -238,7 +244,7 @@ class RecenzentListView(LoginRequiredMixin,ListView):
     def post(self, request, *args, **kwargs):
         queryset = self.get_queryset()
         if(request.POST['bool'] == "true"):
-            queryset.filter(user_id=request.POST['user']).update(recenzent_not_approved=0,recenzent_approved = 1)
+            queryset.filter(id=request.POST['user']).update(recenzent_not_approved=0,recenzent_approved = 1)
         else:
-            queryset.filter(user_id=request.POST['user']).update(recenzent_not_approved=0,recenzent_approved = 0)
+            queryset.filter(id=request.POST['user']).update(recenzent_not_approved=0,recenzent_approved = 0)
         return self.get(self, request, *args, **kwargs)

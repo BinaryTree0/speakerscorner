@@ -13,10 +13,13 @@ class ConferenceForm(ModelForm):
             choices = MODEL_CATEGORIES
     )
     chairman = forms.ModelChoiceField(queryset=CustomUser.objects.all())
+    description = forms.CharField(widget=forms.Textarea)
+    summary = forms.CharField(widget=forms.Textarea)
+
     #sekcije = forms.MultipleChoiceField(choices=SAMPLE_CHOICES)
     class Meta:
         model = Konferencija
-        fields = ['name','chairman','model_categories','image']
+        fields = ['name','chairman','model_categories','image','description','summary']
     def __init__(self, *args, **kwargs):
         super(ConferenceForm, self).__init__(*args, **kwargs)
         for visible in self.visible_fields():

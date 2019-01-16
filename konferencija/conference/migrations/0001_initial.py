@@ -24,7 +24,6 @@ class Migration(migrations.Migration):
                 ('sekcije', models.CharField(max_length=120)),
                 ('form', models.CharField(default=None, max_length=1000)),
                 ('time', models.DateTimeField(auto_now_add=True)),
-                ('image', models.ImageField(upload_to=conference.models.konferencija_directory_path)),
                 ('chairman', models.ForeignKey(default=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='related_primary_manual_roats', to=settings.AUTH_USER_MODEL), on_delete=django.db.models.deletion.CASCADE, related_name='related_secondary_manual_roats', to=settings.AUTH_USER_MODEL)),
                 ('creator', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='related_primary_manual_roats', to=settings.AUTH_USER_MODEL)),
             ],

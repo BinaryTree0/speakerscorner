@@ -134,3 +134,5 @@ LOGOUT_REDIRECT_URL = '/'
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/templates/static/'
+MEDIA_URL = '/templates/static/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,"templates/static/media")

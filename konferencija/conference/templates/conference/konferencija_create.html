@@ -32,13 +32,15 @@
             </li>
           </ul>
         </p>
-        <p><label for="id_image">Image:</label> <input type="file" name="image" accept="image/*" class="file-form-control" required id="id_image"></p>
+        <p><label for="id_description">Description:</label> <textarea rows="4" type="text" name="description" maxlength="4000" class="form-control" required id="id_description"></textarea></p>
+        <p><label for="id_summary">Summary:</label> <textarea  rows="3" type="text" name="summary" maxlength="2000" class="form-control" required id="id_summary"></textarea></p>
+        <p><label for="id_image">Image:</label> <input  type="file" name="image" accept="image/*" class="file-form-control" required id="id_image"></p>
         {{ form.image.errors}}
         <div id="field">
           <div class="input-group mb-3" id="group-input-1">
             <input autocomplete="off" class="input form-control" name="question" type="text" placeholder="Type question" data-items="8"/>
             <div class="input-group-append" id="group1">
-              <button id="btn-append" class="btn" type="button">+</button>
+              <button id="btn-append" class="btn btn-secondary" type="button">+</button>
             </div>
           </div>
         </div>
@@ -59,9 +61,9 @@
         e.preventDefault();
         var groupId = "#group"+next
         var appendButton = $("#btn-append")
-        var removeButton = '<button id="btn-remove-' + next + '" class="btn btn-remove" type="button">-</button>'
+        var removeButton = '<button id="btn-remove-' + next + '" class="btn btn-remove btn-secondary" type="button">-</button>'
         next = next + 1
-        var newInput = '<div class="input-group mb-3" id="group-input-'+ next + '"><input autocomplete="off" class="input form-control" name="question" type="text" placeholder="Type questions" data-items="8"/><div class="input-group-append" id="group' + next +'"><button id="btn-append" class="btn" type="button">+</button></div></div>'
+        var newInput = '<div class="input-group mb-3" id="group-input-'+ next + '"><input autocomplete="off" class="input form-control" name="question" type="text" placeholder="Type questions" data-items="8"/><div class="input-group-append" id="group' + next +'"><button id="btn-append" class="btn btn-secondary" type="button">+</button></div></div>'
         $("#btn-append").remove()
         $(groupId).append(removeButton)
         $("#field").append(newInput)

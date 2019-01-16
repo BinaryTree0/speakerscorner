@@ -22,19 +22,23 @@
 </div>
 {% endif %}
 <!-- Page Content -->
-  <div class="container" >
+  <div class="container mb-5">
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="text-center pt-5 mr-5">Conferences</h1>
-    <div class="row pt-5 offset-1">
+    <div class="row pt-5">
+      <div class="offset-md-1 pl-4">
+          <h4 class="section-subheading text-muted">Choose from a large quantity of upcoming conferences.</h4>
+      </div>
+    </div>
+    <div class="row pt-5 offset-md-1">
       <!-- Blog Entries Column -->
-      <div class="col-md-10">
+      <div class="col-md-10 col-sm-12">
         {% for obj in object_list reversed  %}
         <!-- Blog Post -->
         <div class="card mb-5">
-          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+          <img class="card-img-top" src="{{ obj.image.url }}" height="400" alt="Card image cap">
           <div class="card-body">
             <h2 class="card-title">{{ obj.name }}</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+            <p class="card-text">{{ obj.summary }}</p>
             <a href="{{ obj.get_absolute_url }}" class="btn btn-secondary">
                 {% if not request.user.is_authenticated %}
                 Read More &rarr;

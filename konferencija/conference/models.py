@@ -6,20 +6,19 @@ from django.urls import reverse
 def clearString(str):
     str = ''.join(e for e in str if e.isalnum()).lower().replace('š','s').replace('ć','c').replace('č','c').replace('đ','d').replace('ž','z')
     return str
-def konferencija_directory_path(instance,filename):
-    # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
-    string = 'uploads/konferencije/{0}/{1}'.format(clearString(instance.name),clearString(filename))
-    return string
+
 #Konferencija
 class Konferencija(models.Model):
     creator = models.ForeignKey(CustomUser,related_name='related_primary_manual_roats', on_delete=models.CASCADE)
     chairman = models.ForeignKey(CustomUser,related_name='related_secondary_manual_roats', on_delete=models.CASCADE, default = creator)
     name = models.CharField(max_length=100, unique = True)
+    description = models.CharField(max_length=4000)
+    summary = models.CharField(max_length=2000)
     created = models.DateTimeField(auto_now_add=True)
     sekcije = models.CharField(max_length=120)
     form = models.CharField(max_length = 1000, default = None)
     time = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to=konferencija_directory_path)
+    image = models.ImageField(default="default.jpg")
     REQUIRED_FIELDS = ['creator','chairman','name']
     def __str__(self):
         return self.name

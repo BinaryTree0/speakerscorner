@@ -6,16 +6,19 @@
  .html, .body {
      height: 100%;
 }
+
 .body{
   padding-top: 6vh;
 }
 
-.navbar{
-  height:6vh;
+img {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  max-height: 400px;
 }
 .wrapper {
     min-height: 100%;
-    padding-bottom: 100px;
 }
 
 .image-overlay {
@@ -24,7 +27,11 @@
 .empty-space{
   height: 12vh;
 }
-
+@media only screen and (min-width : 1025px) {
+  #nav-custom{
+    height: 6vh;
+  }
+}
 .portfolio-item {
   margin-bottom: 30px;
 }
@@ -74,11 +81,11 @@
   font-size: 3.2vh !important;
 }
 .bg-dark a{
-  font-size: 2vh;
+  font-size: 2.2vh;
 }
 
 .layer-content{
-  padding-top: 35vh;
+  padding-top: 33vh;
   text-align: center;
 }
 .layer-content p{
@@ -107,13 +114,16 @@
 }
 .messenger{
   height: 55vh;
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 
 .message{
-  max-width: 70vh;
   overflow-wrap: break-word;
+}
+
+.errorlist{
+        color: #721c24;
 }
 
 #return-to-top {

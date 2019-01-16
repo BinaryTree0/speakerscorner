@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 
-
 {% block content %}
 <!-- Page Content -->
   <div class="container">
@@ -12,14 +11,14 @@
         {% for obj in object_list reversed  %}
         <!-- Blog Post -->
         <div class="card mb-5">
-          <img class="card-img-top"  src="http://placehold.it/750x300" alt="Card image cap">
+          <img class="card-img-top"  src="{{ obj.image.url }}" height="400" alt="Card image cap">
           <div class="card-body">
             <h2 class="card-title">{{ obj.name }}
               {% if request.user == obj.chairman %}
               [ Chairman ]
               {% endif %}
             </h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+            <p class="card-text">{{ obj.summary }}</p>
             <a href="{{ obj.get_absolute_url }}" class="btn btn-secondary">Read More &rarr;</a>
           </div>
         </div>
