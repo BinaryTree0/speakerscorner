@@ -24,9 +24,9 @@
 <!-- Page Content -->
   <div class="container mb-5">
     <!-- Page Heading/Breadcrumbs -->
-    <div class="row pt-5">
+    <div class="row pt-5 ">
       <div class="offset-md-1 pl-4">
-          <h4 class="section-subheading text-muted">Choose from a large quantity of upcoming conferences.</h4>
+          <h4 class="text-center text-muted">Choose from a large quantity of upcoming conferences.</h4>
       </div>
     </div>
     <div class="row pt-5 offset-md-1">
@@ -35,7 +35,7 @@
         {% for obj in object_list reversed  %}
         <!-- Blog Post -->
         <div class="card mb-5">
-          <img class="card-img-top" src="{{ obj.image.url }}" height="400" alt="Card image cap">
+          <img class="card-img-top card-img-style" src="{{ obj.image.url }}" height="400" alt="Card image cap">
           <div class="card-body">
             <h2 class="card-title">{{ obj.name }}</h2>
             <p class="card-text">{{ obj.summary }}</p>

@@ -50,7 +50,7 @@ def user_directory_path(instance,filename):
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
     user_sekcija = ''.join(e for e in instance.user_sekcija.__str__() if e.isalnum())
     filename = ''.join(e for e in filename if e.isalnum())
-    string = 'uploads/{0}/user_{1}/{2}'.format(clearString(instance.user_sekcija.__str__()),instance.user_sekcija.user.id,clearString(filename))
+    string = '{0}'.format(clearString(filename))
     return string
 
 class Radovi(models.Model):

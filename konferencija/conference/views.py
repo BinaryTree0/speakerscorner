@@ -10,6 +10,7 @@ from django.http import HttpResponse
 from . import utils
 import zipfile
 import datetime
+from django.conf import settings
 #Conference
 class ConferenceCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     form_class = ConferenceForm
@@ -205,11 +206,12 @@ class RadoviListView(LoginRequiredMixin, ListView):
     def post(self, request, *args, **kwargs):
         if('path' in request.POST):
             path = request.POST['path']
-            rad = Radovi.objects.filter(upload = path)
+            rad = Radovi.objects.filter(upload = path.split('media/')[1])
+            print(settings.MEDIA_ROOT)
             bool = User_Sekcija.objects.filter(sekcija_id = self.kwargs['pk'],user_id = self.request.user.id).get().recenzent_approved
             if(rad.get().approved == 0 and bool == 1):
                 rad.update(approved = 1)
-            with open(path, 'rb') as pdf:
+            with open(settings.MEDIA_ROOT + rad.get().upload.url.split('/media')[1], 'rb') as pdf:
                 response = HttpResponse(pdf.read(),content_type='application/pdf')
                 response['Content-Disposition'] = 'filename=some_file.pdf'
                 return response

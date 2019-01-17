@@ -125,7 +125,12 @@ img {
 .errorlist{
         color: #721c24;
 }
-
+.card-img-style{
+  -webkit-filter: grayscale(40%);
+}
+.card-img-style:hover{
+  -webkit-filter: grayscale(0%);
+}
 #return-to-top {
     position: fixed;
     bottom: 20px;
